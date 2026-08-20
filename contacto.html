@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto • Mura Studio</title>
+
+    <!-- Fuentes Editoriales y Minimalistas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Estilos Propios -->
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-container">
+        <div class="header-action-left">
+          <button
+            class="icon-btn icon-btn-menu"
+            id="openMenuBtn"
+            aria-label="Abrir menú"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5 4V20"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+              />
+              <path
+                d="M12 4V13"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+              />
+              <path
+                d="M19 4V20"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="header-logo site-logo">
+          <a href="index.html">MURA</a>
+        </div>
+
+        <div class="header-actions-right">
+          <!-- Eliminar o comentar este botón:
+          <button class="icon-btn" aria-label="Buscar producto">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </button> -->
+
+          <!-- 🛠️ CORREGIDO: Se removió onclick inline y se asignó un ID sólido -->
+          <button
+            class="icon-btn header-cart-toggle"
+            id="cartToggleBtn"
+            aria-label="Ver carrito"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <path d="M16 10a4 4 0 0 1-8 0" />
+            </svg>
+            <span class="cart-dot"></span>
+          </button>
+
+         <a href="mi-cuenta.html" class="icon-btn" aria-label="Mi cuenta">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="8" r="4" />
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </header>
+    <!-- Menú de Navegación Lateral Izquierdo -->
+    <aside class="menu-drawer" id="menuDrawer">
+      <div class="drawer-header">
+        <button
+          class="icon-btn close-btn"
+          id="closeMenuBtn"
+          aria-label="Cerrar menú"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18 6L6 18M6 6L18 18"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <span class="drawer-brand">MURA</span>
+      </div>
+      <nav class="drawer-nav">
+         <ul class="drawer-links">
+          <li>
+            <a href="#" class="nav-link-filter" data-category="todo">Todo</a>
+          </li>
+          <li>
+            <a href="#" class="nav-link-filter" data-category="colecciones"
+              >Colecciones</a
+            >
+          </li>
+          <li>
+            <a href="#" class="nav-link-filter" data-category="planificacion"
+              >Planificación</a
+            >
+          </li>
+          <li>
+            <a href="#" class="nav-link-filter" data-category="escritorio"
+              >Escritorio</a
+            >
+          </li>
+          <li>
+            <a href="#" class="nav-link-filter" data-category="archivo"
+              >Archivo</a
+            >
+          </li>
+          <!-- Separador visual sutil -->
+          <div class="drawer-divider"></div>
+          <li><a href="nosotros.html">Sobre Mura</a></li>
+          <li><a href="mi-cuenta.html">Mi Cuenta</a></li>
+          <li><a href="seguimiento.html">Seguimiento de Pedido</a></li>
+          <li><a href="contacto.html">Ayuda y Contacto</a></li>
+          <li><a href="reembolsos.html">Política de Devoluciones</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <aside class="cart-drawer" id="cart-drawer">
+      <div class="drawer-header">
+        <button
+          class="icon-btn close-btn"
+          id="closeCartBtn"
+          aria-label="Cerrar carrito"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <path d="M18 6L6 18M6 6L18 18" stroke-linecap="round" />
+          </svg>
+        </button>
+        <span class="drawer-brand">TU COLECCIÓN</span>
+      </div>
+
+      <div class="cart-body"></div>
+
+      <div class="cart-footer">
+        <div class="cart-total-row">
+          <span>Subtotal:</span>
+          <span class="total-price">$0</span>
+        </div>
+        <button class="btn checkout-submit-btn">PROCESAR COMPRA</button>
+      </div>
+    </aside>
+    <section class="contact-container">
+      <div class="contact-header">
+        <h1>¿Cómo podemos ayudarte?</h1>
+        <p>
+          Estamos disponibles para resolver cualquier duda sobre tu pedido o
+          nuestros productos.
+        </p>
+      </div>
+
+      <form class="contact-form" @submit.prevent="handleSubmit">
+        <div class="form-group">
+          <label for="name">Nombre</label>
+          <input type="text" id="name" placeholder="Tu nombre" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" placeholder="tu@correo.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Mensaje</label>
+          <textarea
+            id="message"
+            rows="5"
+            placeholder="¿En qué podemos asistirte?"
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Enviar mensaje</button>
+      </form>
+    </section>
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-nav">
+          <div class="footer-group">
+            <button class="footer-trigger" aria-expanded="false">
+              PERFIL <span class="footer-icon"></span>
+            </button>
+            <div class="footer-panel">
+              <ul class="footer-links">
+                <li><a href="mi-cuenta.html">Mi cuenta</a></li>
+                <li><a href="seguimiento.html">Seguimiento</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="footer-group">
+            <button class="footer-trigger" aria-expanded="false">
+              SERVICIO AL CLIENTE <span class="footer-icon"></span>
+            </button>
+            <div class="footer-panel">
+              <ul class="footer-links">
+                <li><a href="contacto.html">Ayuda y contacto</a></li>
+                <li><a href="reembolsos.html">Política de Devoluciones</a></li>
+                <li><a href="proximamente.html">Términos y condiciones</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="footer-group">
+            <button class="footer-trigger" aria-expanded="false">
+              MURA STUDIO <span class="footer-icon"></span>
+            </button>
+            <div class="footer-panel">
+              <ul class="footer-links">
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="proximamente.html">Blog</a></li>
+                <li><a href="proximamente.html">FAQs</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="footer-group">
+            <button class="footer-trigger" aria-expanded="false">
+              SOCIAL MEDIA <span class="footer-icon"></span>
+            </button>
+            <div class="footer-panel">
+              <ul class="footer-links">
+                <li>
+                  <a href="https://pinterest.com" target="_blank" rel="noopener"
+                    >Pinterest</a
+                  >
+                </li>
+                <li>
+                  <a href="https://instagram.com" target="_blank" rel="noopener"
+                    >Instagram</a
+                  >
+                </li>
+                <li>
+                  <a href="https://youtube.com" target="_blank" rel="noopener"
+                    >Youtube</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="copyright">© 2026 Mura Studio – Minimalismo Clásico</p>
+          <p class="location">Santiago, Chile.</p>
+        </div>
+      </div>
+    </footer>
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
+
+<script>
+  export default {
+    methods: {
+      handleSubmit() {
+        // Lógica de envío del formulario
+        alert("Mensaje enviado con éxito. Te responderemos pronto.");
+      },
+    },
+  };
+</script>

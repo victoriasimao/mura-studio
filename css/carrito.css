@@ -1,0 +1,372 @@
+/* ==========================================================================
+   0. VARIABLES GENERALES (Mantenimiento de consistencia visual)
+   ========================================================================== */
+:root {
+  --bg-color: #fcfbfa; /* Tono de fondo cálido/orgánico */
+  --text-main: #1a1a1a;
+  --text-muted: #707070;
+  --border-color: #e5e5e5;
+  --accent-color: #8c7851; /* Color del botón de pago */
+}
+
+/* ==========================================================================
+   1. MOBILE FIRST (Estilos base por defecto para Smartphones)
+   ========================================================================== */
+
+/* --- Panel Lateral (Drawer) --- */
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%; /* Ocupa toda la pantalla en móviles para mejor usabilidad táctil */
+  height: 100vh;
+  background: var(--bg-color);
+  z-index: 1100; /* Por encima del header y overlays comunes */
+  display: flex;
+  flex-direction: column;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.05);
+
+  /* Estado inicial: Oculto colapsado a la derecha */
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Estado Activo: Se desliza a su posición visual */
+.cart-drawer.is-open {
+  transform: translateX(0);
+}
+
+/* --- Encabezado del Carrito --- */
+.drawer-header {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.drawer-brand {
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: var(--text-main);
+  text-transform: uppercase;
+}
+
+.drawer-divider {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.close-btn:hover {
+  opacity: 0.7;
+}
+
+/* --- Cuerpo y Contenedor de Scroll --- */
+.cart-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  -webkit-overflow-scrolling: touch; /* Scroll fluido inercial en iOS */
+}
+
+/* Mensaje de carrito vacío */
+.cart-empty-message {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* --- Tarjeta de Producto en Carrito --- */
+.cart-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+}
+
+.item-img img {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.item-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.item-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text-main);
+}
+
+.item-meta {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.remove-item-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.remove-item-btn:hover {
+  color: var(--text-main);
+}
+
+.item-details-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 12px;
+}
+
+/* --- Controles de Cantidad --- */
+.item-qty {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  width: fit-content;
+}
+
+.qty-btn {
+  background: none;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-main);
+}
+
+.qty-num {
+  font-size: 13px;
+  padding: 0 4px;
+  min-width: 20px;
+  text-align: center;
+  color: var(--text-main);
+}
+
+.item-price {
+  font-weight: 500;
+  color: var(--text-main);
+  font-size: 14px;
+}
+
+/* --- Footer Fijo del Carrito --- */
+.cart-footer {
+  padding: 24px;
+  background: var(--bg-color);
+  transition: border-color 0.3s ease;
+}
+
+/* Oculta el borde superior del footer si el botón de pago está deshabilitado */
+.cart-footer:has(.btn-checkout.is-disabled),
+.cart-footer:has(.btn.is-disabled) {
+  border-top-color: transparent;
+}
+
+.cart-total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: var(--text-main);
+}
+
+/* Botón de Checkout Base */
+/* Eliminar cualquier sombra o línea de relieve nativa del navegador en el botón */
+.cart-footer .btn {
+  width: 100%;
+  padding: 16px;
+  background: var(--accent-color);
+  color: #fff;
+  border: none;
+  outline: none; /* Evita el borde de enfoque por defecto */
+  box-shadow: none !important; /* Fuerza la eliminación de cualquier sombra inferior */
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.cart-footer .btn:hover {
+  background: #6b5b3d;
+}
+
+/* Estado deshabilitado cuando el carrito está vacío */
+.cart-footer .btn.is-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+  background: var(--accent-color);
+}
+
+/* --- Fondo Traslúcido de Pantalla (Overlay Exclusivo) --- */
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px); /* El desenfoque premium vive solo aquí */
+  z-index: 1050; /* Abajo del drawer, arriba del contenido base */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.drawer-overlay.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   2. COMPONENTES ADICIONALES (Feedback e Interacciones Especiales)
+   ========================================================================== */
+
+/* --- Contenedor Base del Mini-Modal Superior (Toast por ID) --- */
+#cart-toast-notification {
+  position: fixed;
+  top: 80px; /* Debajo de la barra de navegación fija */
+  right: 24px;
+  width: calc(100% - 48px);
+  max-width: 360px;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  z-index: 2000; /* Prioridad máxima sobre cajones laterales */
+  padding: 16px;
+
+  /* Estado Inicial: Oculto con desplazamiento superior sutil */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.4s ease,
+    visibility 0.4s ease;
+}
+
+/* Estado Activo: Desciende con suavidad */
+#cart-toast-notification.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.cart-toast-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cart-toast-message {
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+.cart-toast-product {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.cart-toast-img {
+  width: 50px;
+  height: 65px;
+  object-fit: cover;
+}
+
+.cart-toast-info h5 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.cart-toast-info p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   3. RESPONSIVE DESIGN (Media Queries organizadas de menor a mayor)
+   ========================================================================== */
+
+/* 📱 SMARTPHONES COMPACTOS (Ajustes de espacio para la alerta flotante) */
+@media screen and (max-width: 480px) {
+  #cart-toast-notification {
+    top: 70px;
+    right: 12px;
+    width: calc(100% - 24px);
+  }
+}
+
+/* 💻 TABLETS (Dispositivos medianos en adelante) */
+@media screen and (min-width: 768px) {
+  .cart-drawer {
+    width: 400px; /* Limita el ancho del drawer para no romper proporciones */
+  }
+
+  .drawer-header,
+  .cart-body,
+  .cart-footer {
+    padding: 32px; /* Relleno holgado premium */
+  }
+
+  .item-title {
+    font-size: 15px;
+  }
+}
+
+/* 🖥️ ESCRITORIOS (Pantallas de alta resolución) */
+@media screen and (min-width: 1024px) {
+  .cart-drawer {
+    width: 440px; /* Ancho definitivo para exhibición de catálogo lateral */
+  }
+}

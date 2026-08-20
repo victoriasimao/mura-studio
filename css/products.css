@@ -1,0 +1,311 @@
+/* ==========================================================================
+   9. GRILLA DE PRODUCTOS & SECCIÓN (ENFOQUE GALERÍA DE ARTE)
+   ========================================================================== */
+.products-grid-section {
+  /* Cojín masivo superior e inferior para aislar el catálogo y darle estatus */
+  padding: 80px 0; 
+  background-color: var(--color-bg-main);
+}
+
+/* Grilla Base: Móvil por defecto (1 columna fluida) */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: 64px; /* Respiro generoso vertical en móviles */
+}
+
+/* ==========================================================================
+   TARJETA DE PRODUCTO E INFRAESTRUCTURA (ESTRUCTURA BASE)
+   ========================================================================== */
+.product-card {
+  display: flex !important; 
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--color-text-main);
+  cursor: pointer;
+  width: 100%; 
+}
+
+/* Contenedor Swiper */
+.product-image-wrapper.swiper {
+  position: relative;
+  overflow: hidden;
+  width: 100% !important; 
+  display: block; 
+  aspect-ratio: 3 / 4; /* Proporción vertical tipo revista */
+  background-color: #f5f4f0;
+}
+
+/* El riel interno que transporta los slides */
+.product-image-wrapper .swiper-wrapper {
+  display: flex !important;
+  flex-direction: row !important; 
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.product-image-wrapper .swiper-slide {
+  width: 100% !important; 
+  height: 100% !important;
+  flex-shrink: 0 !important; 
+  position: relative;
+}
+
+.product-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  display: block;
+}
+
+/* En móvil las dos imágenes miden el 100% de sus respectivos slides al deslizar */
+.product-img.img-main,
+.product-img.img-hover {
+  opacity: 1 !important;
+  position: relative !important;
+  top: 0;
+  left: 0;
+}
+
+/* ==========================================================================
+   INFORMACIÓN DEL PRODUCTO & CONTENIDO (ESTILO FICHA DE MUSEO)
+   ========================================================================== */
+.product-info {
+  display: flex;
+  flex-direction: column;
+  padding-top: 16px; /* Más separación del marco de la foto */
+  gap: 2px; /* Bloque de texto compacto y elegante */
+}
+
+.product-title {
+  font-family: var(--font-main);
+  font-size: 13px; 
+  font-weight: 400; /* Peso visual ligero = alta gama */
+  letter-spacing: 0.06em; /* Aire de lectura editorial */
+  line-height: 1.5;
+  color: var(--color-text-main);
+  margin: 0;
+  text-transform: uppercase; /* Estilo cédula de exhibición */
+}
+
+.product-code {
+  font-family: var(--font-main);
+  font-size: 11px; 
+  font-style: italic; /* Detalle de archivo de arte */
+  color: #a39f99;
+  letter-spacing: 0.06em; /* Aire de lectura editorial */
+ 
+}
+
+.product-price {
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-text-main);
+  margin-top: 4px;
+  letter-spacing: 0.08em;
+}
+
+/* Estilo minimalista para los puntos de paginación Swiper (Móvil) */
+.swiper-pagination-bullet {
+  background: #1e1c1a !important;
+  opacity: 0.2;
+}
+
+.swiper-pagination-bullet-active {
+  background: #1e1c1a !important;
+  opacity: 1 !important;
+}
+
+/* ==========================================================================
+   BOTONES DE AGREGAR AL CARRITO (QUICK ADD)
+   ========================================================================== */
+
+/* 1. Botón Flotante para Escritorio (Desktop) */
+.btn-quick-add {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  width: calc(100% - 32px);
+  background-color: #fdfbf7; 
+  border: 1px solid #6b5b3d;;
+  color: #1e1c1a;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 12px 0;
+  cursor: pointer;
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+              transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+              background-color 0.3s ease, 
+              color 0.3s ease;
+}
+
+.btn-quick-add:hover {
+  background-color: #6b5b3d;;
+  color: #fdfbf7;
+}
+
+/* 2. Botón Estático para Celulares y Tablets (Debajo de la info) */
+.btn-quick-add-mobile {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid rgba(30, 28, 26, 0.15); 
+  color: #1e1c1a;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 0;
+  margin-top: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-quick-add-mobile:active {
+  background-color: #1e1c1a;
+  color: #fdfbf7;
+  border-color: #1e1c1a;
+}
+
+/* ==========================================================================
+   VISIBILIDAD CONTROLADA POR DEFECTO (Móvil Primero)
+   ========================================================================== */
+.desktop-only {
+  display: none !important;
+}
+
+.mobile-only {
+  display: block !important;
+}
+
+/* ==========================================================================
+   📱 RESPONSIVE: TABLETS EN ADELANTE (768px o más)
+   ========================================================================== */
+@media screen and (min-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 Columnas en Tablet */
+    column-gap: 48px; /* Hueco generoso lateral */
+    row-gap: 80px;  /* Espaciado de descanso vertical */
+  }
+}
+
+/* ==========================================================================
+   💻 RESPONSIVE: COMPUTADORAS (1024px o más) - EDICIÓN ASIMÉTRICA EDITORIAL
+   ========================================================================== */
+@media screen and (min-width: 1024px) {
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Columnas estables en Escritorio */
+    grid-auto-flow: dense; /* 🛠️ OBLIGA a los elementos pequeños a rellenar huecos vacíos */
+    align-items: start;    /* Evita que las tarjetas se estiren artificialmente por fila */
+    column-gap: 64px;       /* Huecos gigantescos laterales estilo galería */
+    row-gap: 96px;         /* Aislamiento completo por fila */
+  }
+
+  /* ------------------------------------------------------------------------
+     EL SECRETO DE COMPOSICIÓN (FICHA DE MUSEO ASIMÉTRICA)
+     ------------------------------------------------------------------------ */
+  
+  /* 1. Producto Destacado (Ocupa 2 filas de alto - Ej: Cuaderno) */
+  .product-card--featured {
+    grid-row: span 2; 
+  }
+
+  /* Ajuste de proporción vertical exclusivo para la tarjeta destacada */
+  .product-card--featured .product-image-wrapper.swiper {
+    aspect-ratio: 3 / 5.3; 
+  }
+
+  /* 2. Producto Ancho (Ocupa 2 columnas de ancho - Ej: Set de escritorio) */
+  .product-card--wide {
+    grid-column: span 2;
+  }
+
+  /* Ajuste de proporción horizontal exclusiva para la tarjeta de doble ancho */
+  .product-card--wide .product-image-wrapper.swiper {
+    /* aspect-ratio: 16 / 10; Un aspecto cinematográfico muy sofisticado */
+    aspect-ratio: 16 / 9.74; 
+  
+  /* Asegura que el contenedor no se desborde */
+  height: 100%;
+  }
+
+  /* Intercambio estricto de visibilidad de los botones en PC */
+  .desktop-only {
+    display: block !important;
+  }
+  
+  .mobile-only {
+    display: none !important;
+  }
+
+  /* ------------------------------------------------------------------------
+     DESACTIVACIÓN DE SWIPER Y ACTIVACIÓN DEL HOVER NATIVO DE IMÁGENES
+     ------------------------------------------------------------------------ */
+  
+  /* Neutralizamos el comportamiento de fila horizontal de Swiper */
+  .product-image-wrapper .swiper-wrapper {
+    display: block !important;
+    transform: none !important;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Superponemos las diapositivas para controlarlas por opacidad */
+  .product-image-wrapper .swiper-slide {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* El primer slide (imagen principal) al frente */
+  .product-image-wrapper .swiper-slide:first-child {
+    position: relative !important; /* Mantiene viva la altura del contenedor según el aspect-ratio activo */
+    z-index: 2;
+  }
+
+  /* El segundo slide (imagen secundaria) se oculta exactamente detrás */
+  .product-image-wrapper .swiper-slide:nth-child(2) {
+    z-index: 1;
+  }
+
+  /* Ajustamos las posiciones y transiciones estables de las imágenes para PC */
+  .product-img {
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .product-img.img-main {
+    position: relative !important;
+    z-index: 2;
+  }
+
+  .product-img.img-hover {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  /* EFECTO HOVER: Desvanecer la principal para revelar la de atrás y subir botón */
+  .product-card:hover .img-main {
+    opacity: 0 !important;
+  }
+
+  .product-card:hover .btn-quick-add {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+}

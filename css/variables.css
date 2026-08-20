@@ -1,0 +1,27 @@
+/* ==========================================================================
+   1. VARIABLES & DESIGN TOKENS (MURA STUDIO v1.0)
+   ========================================================================== */
+:root {
+  /* Paleta de Colores de Marca */
+  --color-primary-default: #8c7851;
+  --color-primary-hover: #6b5b3d;
+  --color-primary-active: #4f432d;
+  --color-disabled-bg: #d5cfc5;
+  --color-disabled-text: #a6a095;
+
+  /* Sistema de Colores */
+  --color-bg-main: #fdfbf7; /* Fondo crema orgánico */
+  --color-text-main: #1e1c1a;
+  --color-white: #ffffff;
+
+  /* Tipografías & Animaciones */
+  --font-main: "DM Sans", sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Tokens de Letter Spacing (Móvil por defecto) */
+  --tracking-logo: 0.22em;
+  --tracking-title: 0.03em;
+  --tracking-subtitle: 0.06em;
+  --tracking-btn: 0.11em;
+}

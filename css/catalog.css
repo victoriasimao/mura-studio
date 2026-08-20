@@ -1,0 +1,252 @@
+
+/* ==========================================================================
+   1. SECCIÓN DE CONTROLADORES DEL CATÁLOGO (FILTROS & NAV)
+   ========================================================================== */
+.catalog-controls-section {
+  padding: 40px 0 40px 0;
+  background-color: var(--color-bg-main);
+  position: relative;
+  margin-top: 40px;
+}
+
+.catalog-container {
+  width: 100%;
+  padding: 0 24px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* Adaptación responsive nativa: Dos niveles en móviles, una fila en escritorio */
+.filter-order-bar {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(30, 28, 26, 0.08);
+  padding-bottom: 12px;
+  gap: 16px;
+}
+
+/* Contenedor de categorías en móvil: Deslizamiento horizontal invisible muy limpio */
+.main-categories-nav {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+  /* Ocultar barra de scroll en navegadores */
+  scrollbar-width: none; 
+}
+
+.main-categories-nav::-webkit-scrollbar {
+  display: none; 
+}
+
+.category-main-btn {
+  background: none;
+  border: none;
+  padding: 6px 0;
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(30, 28, 26, 0.4);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+  flex-shrink: 0; /* Evita que las palabras se compriman */
+}
+
+.category-main-btn:hover,
+.category-main-btn.is-active {
+  color: var(--color-text-main);
+}
+
+/* Indicador de categoría activa ajustado para no romper el flujo en móvil */
+.category-main-btn.is-active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; 
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--color-text-main);
+  z-index: 2;
+}
+
+/* Bloque de herramientas en móvil: Justificado proporcionalmente a los extremos */
+.controls-right-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 16px; /* Asegura separación mínima entre Filtro y Ordenar */
+}
+
+
+/* ==========================================================================
+   2. COMPONENTE: SELECTOR DE ORDEN PREMIUM (DROPDOWN)
+   ========================================================================== */
+.catalog-sort {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* CORREGIDO: Evita las dos líneas en "Ordenar por:" y congela su estructura horizontal */
+.sort-trigger-btn {
+  background: none;
+  border: none;
+  padding: 4px 0;
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(30, 28, 26, 0.4);
+  cursor: pointer;
+  display: inline-flex; /* Mantiene todo horizontal de forma estricta */
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap; /* Bloquea el salto de línea del texto dinámico */
+  transition: color 0.3s ease;
+}
+
+.sort-trigger-btn:hover {
+  color: var(--color-text-main);
+}
+
+.sort-target {
+  color: var(--color-text-main);
+}
+
+.sort-icon {
+  font-size: 9px;
+  margin-left: 2px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.catalog-sort.is-active .sort-icon {
+  transform: rotate(45deg);
+  color: var(--color-text-main);
+}
+
+.sort-options-list {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: rgba(251, 251, 250, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(79, 67, 45, 0.1);
+  padding: 16px;
+  margin: 8px 0 0 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 180px;
+  z-index: 90;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.catalog-sort.is-active .sort-options-list {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.sort-item {
+  font-family: var(--font-main);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(30, 28, 26, 0.4);
+  cursor: pointer;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.sort-item:hover,
+.sort-item.is-selected {
+  color: var(--color-text-main);
+}
+
+.sort-item:hover {
+  padding-left: 4px;
+}
+/* ==========================================================================
+   3. REAJUSTES DEL CATÁLOGO (MEDIA QUERIES)
+   ========================================================================== */
+
+/* 📱 TABLETS EN ADELANTE (768px o más) */
+@media screen and (min-width: 768px) {
+  .catalog-container {
+    padding: 0 40px; 
+  }
+  .filter-order-bar {
+    flex-direction: column; 
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 14px;
+  }
+  .main-categories-nav {
+    width: 100%;
+    gap: 24px;
+    overflow-x: auto; 
+    white-space: nowrap;
+    padding-bottom: 4px;
+  }
+  .category-main-btn {
+    font-size: 13px;
+  }
+  .category-main-btn.is-active::after {
+    bottom: -4px; 
+  }
+  .controls-right-group {
+    width: 100%;
+    justify-content: space-between; 
+    gap: 24px;
+  }
+  .filter-toggle-btn,
+  .sort-trigger-btn {
+    font-size: 13px;
+  }
+  .sub-filters-inner {
+    gap: 40px;
+  }
+}
+
+/* 💻 COMPUTADORAS Y PANTALLAS GRANDES (1024px o más) */
+@media screen and (min-width: 1024px) {
+  .filter-order-bar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+  }
+  .main-categories-nav {
+    gap: 32px;
+    overflow-x: visible; 
+    padding-bottom: 0;
+  }
+  .category-main-btn.is-active::after {
+    bottom: -15px; 
+  }
+  .controls-right-group {
+    width: auto;
+    justify-content: flex-end;
+    gap: 36px;
+  }
+  .category-main-btn,
+  .filter-toggle-btn,
+  .sort-trigger-btn {
+    font-size: 14px;
+  }
+  .sub-filters-inner {
+    gap: 80px;
+  }
+}

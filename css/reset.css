@@ -1,0 +1,28 @@
+
+/* ==========================================================================
+   2. RESET GENERAL & BASE
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-bg-main);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+}
+/* Media Query para pantallas grandes */
+@media screen and (min-width: 1024px) {
+  .desktop-only {
+    display: block !important;
+  }
+  .mobile-only {
+    display: none !important;
+  }
+}

@@ -1,0 +1,480 @@
+/* ==========================================================================
+   ESTILOS GENERALES PARA PÁGINAS INTERNAS (Mura Studio)
+   ========================================================================== */
+
+.about-container,
+.policy-container,
+.contact-container {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 6rem;
+  color: #1a1a1a;
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   1. PÁGINA "NOSOTROS" (About Us)
+   ========================================================================== */
+
+.about-hero {
+  margin-bottom: 4rem;
+}
+
+.about-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+.manifesto {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  line-height: 1.6;
+  color: #333;
+  max-width: 720px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3.5rem;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 3.5rem;
+}
+
+.about-block h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.about-block p {
+  font-family: 'DM Sans', sans-serif;
+  color: #555;
+  line-height: 1.65;
+  font-size: 0.95rem;
+}
+
+
+/* ==========================================================================
+   2. PÁGINAS DE POLÍTICAS Y REEMBOLSOS
+   ========================================================================== */
+
+.policy-header h1,
+.contact-header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 400;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.policy-header .subtitle,
+.contact-header p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  color: #666;
+  margin-bottom: 3rem;
+  line-height: 1.5;
+}
+
+.policy-content article {
+  margin-bottom: 2.5rem;
+}
+
+.policy-content h2 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  color: #1a1a1a;
+}
+
+.policy-content p {
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.7;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.mail{
+  color: #8c7851;
+}
+.mail:hover{
+  color: #6b5b3d;
+}
+
+
+/* ==========================================================================
+   3. PÁGINA DE CONTACTO Y SOPORTE (Formulario Minimalista)
+   ========================================================================== */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 600px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #555;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid #dcdcdc;
+  background-color: #fafafa;
+  border-radius: 2px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: #1a1a1a;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #1a1a1a;
+  background-color: #fff;
+}
+
+.submit-btn {
+  background-color: #8c7851;
+  color: #fff;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 2px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  align-self: flex-start;
+  margin-top: 0.5rem;
+}
+
+.submit-btn:hover {
+  background-color: #6b5b3d;
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+
+/* ==========================================================================
+   4. DISEÑO RESPONSIVE (Adaptación para Móviles)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .about-container,
+  .policy-container,
+  .contact-container {
+    padding: 3rem 1.25rem 4rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-top: 2.5rem;
+  }
+
+  .about-hero {
+    margin-bottom: 3rem;
+  }
+}
+/* ==========================================================================
+   VISTA "PRÓXIMAMENTE" (Coming Soon - Mura Studio)
+   ========================================================================== */
+
+.coming-soon-container {
+  min-height: calc(100vh - 220px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 1.5rem;
+  text-align: center;
+}
+
+.coming-soon-content {
+  max-width: 580px;
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.coming-tag {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #555;
+  background-color: #f2f2f2;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+}
+
+.coming-soon-content h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: #1a1a1a;
+  margin-bottom: 1.25rem;
+  line-height: 1.1;
+}
+
+.coming-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 2.5rem;
+}
+
+.coming-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-mura-dark {
+  background-color: #8c7851;
+  color: #fff;
+  padding: 1rem 2.2rem;
+  border-radius: 2px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-mura-dark:hover {
+  background-color: #6b5b3d;
+}
+
+.btn-mura-dark:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   RESPONSIVE (Adaptación para Móviles)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .coming-soon-container {
+    min-height: calc(100vh - 160px);
+    padding: 3.5rem 1.25rem;
+  }
+}
+/* ==========================================================================
+   ESTILOS: MI CUENTA & SEGUIMIENTO (Mura Studio)
+   ========================================================================== */
+
+.account-container,
+.tracking-container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 6rem;
+  color: #1a1a1a;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.account-header,
+.tracking-header {
+  margin-bottom: 3rem;
+  text-align: left;
+}
+
+.account-tag {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #555;
+  background-color: #f2f2f2;
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+  margin-bottom: 1.2rem;
+}
+
+.account-header h1,
+.tracking-header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+  line-height: 1.15;
+}
+
+.account-header p,
+.tracking-header p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Grilla para Mi Cuenta */
+.account-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+
+.account-card {
+  background: #fff;
+  border: 1px solid #eaeaea;
+  padding: 2.5rem;
+  border-radius: 4px;
+}
+
+.account-card.light-bg {
+  background-color: #fafafa;
+}
+
+.account-card h2 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.account-card p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.mura-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.btn-mura-outline {
+  display: inline-block;
+  background-color: transparent;
+  color: #1a1a1a;
+  border: 1px solid #1a1a1a;
+  padding: 0.9rem 2rem;
+  border-radius: 2px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-mura-outline:hover {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+/* Caja de Seguimiento */
+.tracking-box {
+  background: #fafafa;
+  border: 1px solid #eaeaea;
+  padding: 3rem;
+  border-radius: 4px;
+  max-width: 700px;
+}
+
+.tracking-form .inline-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.tracking-form input {
+  flex: 1;
+  padding: 0.9rem 1rem;
+  border: 1px solid #dcdcdc;
+  background-color: #fff;
+  border-radius: 2px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+}
+
+.tracking-form input:focus {
+  outline: none;
+  border-color: #1a1a1a;
+}
+
+.tracking-note {
+  margin-top: 1.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.tracking-note a {
+  color: #1a1a1a;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .account-container,
+  .tracking-container {
+    padding: 3rem 1.25rem 4rem;
+  }
+
+  .account-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .tracking-form .inline-group {
+    flex-direction: column;
+  }
+
+  .tracking-box {
+    padding: 1.5rem;
+  }
+}
